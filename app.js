@@ -1,4 +1,7 @@
+"Use strict";
+
 const choices = ["rock", "paper", "scissors"];
+// const choices = ["./img/rock.png", "./img/paper.png", "./img/paper.png"];
 let playerScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
@@ -10,15 +13,17 @@ const resultDisplay = document.getElementById("result");
 const roundDisplay = document.getElementById("round");
 const resetBtn = document.getElementById("reset");
 
+const imgPlayer = document.querySelector("playerImg");
+
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (roundsPlayed < 5) {
+    if (roundsPlayed < 10) {
       const playerChoice = button.id;
       const computerChoice = choices[Math.floor(Math.random() * 3)];
 
       const result = playRound(playerChoice, computerChoice);
       resultDisplay.textContent = result;
-      //   console.log(resultDisplay);
+      console.log(result);
 
       if (result.includes("Win")) {
         playerScore++;
@@ -31,7 +36,7 @@ buttons.forEach((button) => {
       roundsPlayed++;
       roundDisplay.textContent = roundsPlayed;
 
-      if (roundsPlayed === 5) {
+      if (roundsPlayed === 10) {
         endGame();
       }
     }
@@ -69,5 +74,22 @@ resetBtn.addEventListener("click", () => {
   playerScoreDisplay.textContent = playerScore;
   computerScoreDisplay.textContent = computerScore;
   roundDisplay.textContent = roundsPlayed;
-  resultDisplay.textContent = "Game Start";
+  resultDisplay.textContent = "Start Game";
+});
+
+//* PRELOADER
+
+window.addEventListener("load", function () {
+  const preloader = document.querySelector(".preloader");
+  const content = document.querySelector(".container");
+  const footer = document.querySelector("footer");
+
+  // Introduce a delay (in milliseconds) before showing the content
+  const delayDuration = 2000; // 2 seconds
+
+  setTimeout(function () {
+    preloader.style.display = "none";
+    content.style.display = "block";
+    footer.style.display = "block";
+  }, delayDuration);
 });
