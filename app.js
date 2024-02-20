@@ -43,6 +43,8 @@ buttons.forEach((button) => {
   });
 });
 
+// player vs Computer function
+
 function playRound(player, computer) {
   if (player === computer) return "Draw!";
   if (
@@ -56,6 +58,7 @@ function playRound(player, computer) {
   }
 }
 
+// end Game function
 function endGame() {
   if (playerScore > computerScore) {
     resultDisplay.textContent = "Congratulations! You win!";
@@ -66,6 +69,7 @@ function endGame() {
   }
 }
 
+// button
 resetBtn.addEventListener("click", () => {
   playerScore = 0;
   computerScore = 0;
